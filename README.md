@@ -1,2 +1,2 @@
-# cronicle-interface-plugin.js
+# cronicle-interface-plugin
 Cronicle plugin for enabling/disabling interfaces via SNMP.
