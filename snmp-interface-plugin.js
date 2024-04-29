@@ -72,7 +72,6 @@ stream.on('json', async function(job) {
 		};
 		varbinds.push(varbind);
 	}
-	console.log(snmpUser);
 	console.log(varbinds);
 	await SetSNMP(session, varbinds, stream);
 	
