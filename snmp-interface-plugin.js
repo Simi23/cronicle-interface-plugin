@@ -107,7 +107,8 @@ stream.on('json', async function(job) {
 		};
 		varbinds.push(varbind);
 	}
-	
+	console.log(snmpUser);
+	console.log(varbinds);
 	await SetSNMP(session, varbinds, stream);
 	
 	stream.write({ complete: 1, code: 0, description: "Command executed successfully."});
