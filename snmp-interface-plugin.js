@@ -70,7 +70,7 @@ stream.on('json', async function(job) {
 
 	// Example user
 	var snmpUser = {
-		name: params.username,
+		name: params.snmp_username,
 		level: authLevel,
 		authProtocol: authProto,
 		authKey: params.snmp_auth_key,
