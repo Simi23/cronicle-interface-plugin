@@ -98,7 +98,7 @@ stream.on('json', async function(job) {
 			interfaceIds.push(String(j));
 		}
 	}
-	
+	console.log(interfaceIds);
 	for (var i = 0; i < interfaceIds.length; i++) {
 		const iid = interfaceIds[i];
 		const oid = `1.3.6.1.2.1.2.2.${iid}.7`;
