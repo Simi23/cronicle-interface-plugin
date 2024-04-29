@@ -108,16 +108,24 @@ stream.on('json', async function(job) {
 		varbinds.push(varbind);
 	}
 	
-	session.set(varbinds, function (error, varbinds_resp) {
-		if (error) {
-			stream.write({ complete: 1, code: 1, description: "Error setting OIDs:\n" + error.toString()});
-			return;
-		}
-		session.close();
-	});
+	await SetSNMP(session, varbinds, stream);
 	
 	stream.write({ complete: 1, code: 0, description: "Command executed successfully."});
 } ); // stream
+
+async function SetSNMP(session, varbinds, stream) {
+	return new Promise(resolve => {
+		session.set(varbinds, function (error, varbinds_resp) {
+			if (error) {
+				stream.write({ complete: 1, code: 1, description: "Error setting OIDs:\n" + error.toString()});
+				resolve();
+				return;
+			}
+			session.close();
+			resolve();
+		});
+	});	
+}
 
 function getAuthLevel(authLevel) {
 	switch(authLevel) {
