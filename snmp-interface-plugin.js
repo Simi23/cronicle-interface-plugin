@@ -83,8 +83,9 @@ stream.on('json', async function(job) {
 	var varbinds = [];
 	
 	var interfaceIds = [];
-	
-	for (const segment in interfaceIdString.split(',')) {
+	const splitIds = interfaceIdString.split(',');
+	for (var i = 0; i < splitIds.length; i++) {
+		const segment = splitIds[i];
 		if(!segment.includes('-')) {
 			interfaceIds.push(segment);
 			continue;
@@ -93,8 +94,8 @@ stream.on('json', async function(job) {
 		const ends = segment.split('-');
 		const start = Number(ends[0]);
 		const end = Number(ends[1]);
-		for (var i = start; i <= end; i++) {
-			interfaceIds.push(String(i));
+		for (var j = start; j <= end; j++) {
+			interfaceIds.push(String(j));
 		}
 	}
 	
