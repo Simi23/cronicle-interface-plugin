@@ -113,6 +113,7 @@ stream.on('json', async function(job) {
 			stream.write({ complete: 1, code: 1, description: "Error setting OIDs:\n" + error.toString()});
 			return;
 		}
+		session.close();
 	});
 	
 	stream.write({ complete: 1, code: 0, description: "Command executed successfully."});
