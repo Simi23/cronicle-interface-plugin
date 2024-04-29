@@ -9,12 +9,7 @@
 // Used OID: 1.3.6.1.2.1.2.2.1.7 - ifAdminStatus
 // Params: 
 //   device_ip: IPv4 Address
-//   snmp_username: string
-//   snmp_security_level: menu (noAuthNoPriv,authNoPriv,authPriv)
-//   snmp_auth_proto: menu (md5, sha, sha256, sha512)
-//   snmp_auth_key: string
-//   snmp_priv_proto: menu (des,aes,aes256b,aes256r)
-//   snmp_priv_key: string
+//   snmp_community: string
 //   interface_ids: string (cisco-like range syntax, e.q. 1-4,6) (show snmp mib ifmib ifindex)
 //   enabled: boolean
 
@@ -42,7 +37,7 @@ stream.on('json', async function(job) {
 	
 	// Check if wlan_id is Number
 	if (!RANGEREGEX.test(params.interface_ids)) {
-		stream.write({ complete: 1, code: 1, description: "Supplied Interface ID String has incorrect formatting. Got: '" + (params.wlan_id) + "'" });
+		stream.write({ complete: 1, code: 1, description: "Supplied Interface ID String has incorrect formatting. Got: '" + (params.interface_ids) + "'" });
 		return;
 	}
 	var interfaceIdString = params.interface_ids;
