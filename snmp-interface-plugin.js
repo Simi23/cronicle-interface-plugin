@@ -93,7 +93,7 @@ stream.on('json', async function(job) {
 		const ends = segment.split('-');
 		const start = Number(ends[0]);
 		const end = Number(ends[1]);
-		for (var i = start, i <= end; i++) {
+		for (var i = start; i <= end; i++) {
 			interfaceIds.push(String(i));
 		}
 	}
